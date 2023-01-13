@@ -1,0 +1,39 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-todoamp-dev-182848-authRole",
+      "UnauthRoleArn": "arn:aws:iam::580521246729:role/amplify-todoamp-dev-182848-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::580521246729:role/amplify-todoamp-dev-182848-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-todoamp-dev-182848-deployment",
+      "UnauthRoleName": "amplify-todoamp-dev-182848-unauthRole",
+      "StackName": "amplify-todoamp-dev-182848",
+      "StackId": "arn:aws:cloudformation:us-east-2:580521246729:stack/amplify-todoamp-dev-182848/408e75b0-92d9-11ed-b4f1-0a5428b2f636",
+      "AmplifyAppId": "d1pfyui5o20lpx",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-todoamp-dev-182848-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "auth": {
+        "friendlyName": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "friendlyNameCustomMessage": {
+          "REDIRECTURL": "http://localhost:3000/",
+          "EMAILSUBJECT": "account",
+          "EMAILMESSAGE": "account",
+          "deploymentBucketName": "amplify-todoamp-dev-182848-deployment",
+          "s3Key": "amplify-builds/friendlyNameCustomMessage-6b4a6230385061566663-build.zip"
+        },
+        "AdminQueriesf2e8d448": {
+          "deploymentBucketName": "amplify-todoamp-dev-182848-deployment",
+          "s3Key": "amplify-builds/AdminQueriesf2e8d448-5155656158695962644e-build.zip"
+        }
+      },
+      "api": {
+        "todoamp": {},
+        "AdminQueries": {}
+      }
+    }
+  }
+}
