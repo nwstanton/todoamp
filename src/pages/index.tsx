@@ -49,7 +49,7 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
   return (
     <div className="flex flex-col items-center pt-5">
       <Head>
-        <title>Amplify + Next.js</title>
+        <title>Nathan's Todo App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
