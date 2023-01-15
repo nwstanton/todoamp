@@ -19,8 +19,11 @@ import {CursorArrowRaysIcon} from '@heroicons/react/24/solid'
 
 Amplify.configure({ ...awsExports, ssr: true })
 
+
 export default function Home({ todos = [] }: { todos: Todo[] }) {
   const router = useRouter()
+  
+  let todoCount: string = todos.length.toString() + " " + (todos.length > 1 ? "Todos" : "Todo")
 
   async function handleCreateTodo(event: { preventDefault: () => void; target: HTMLFormElement | undefined }) {
     event.preventDefault()
@@ -56,24 +59,23 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
       </Head>
 
       <main >
-        <h3 className="text text-center text-xl">Nathan's Todo app with amplify </h3>
+        <h1>Nathan's Todo app with amplify </h1>
 
-        <p className="text text-center">
-          <code>{todos.length}</code>
-          Todos
+        <p>
+          {todoCount}
         </p>
 
         <div className="grid">
           {todos.map((todo) => (
             <a className="max-w-[300px] m-3 rounded border border-slate-500 hover:shadow-md relative" href={`/todo/${todo.id}`} key={todo.id}>
               <CursorArrowRaysIcon className="w-4 h-4 absolute right-1 top-1" />
-              <h3 className="p-1 rounded-t bg-slate-300">{todo.name}</h3>
-              <p className="p-2 text text-center">{todo.description}</p>
+              <h2 className="p-1 rounded-t bg-slate-300">{todo.name}</h2>
+              <p>{todo.description}</p>
             </a>
           ))}
 
           
-            <h3 className="text text-center">Create a new Todo</h3>
+            <h1>Create a new Todo</h1>
 
             <Authenticator>
               {({ signOut }) => (

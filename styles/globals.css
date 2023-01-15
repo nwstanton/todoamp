@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    h1 {
+      @apply text-xl text-center;
+    }
+    h2 {
+      @apply text-lg;
+    }
+    p {
+      @apply text-center p-2;
+    }
+  }
