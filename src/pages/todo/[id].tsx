@@ -50,7 +50,7 @@ export default function TodoPage({ todo }: { todo: Todo }) {
       </Head>
 
       <main className="max-w-[300px] m-3 rounded border border-slate-500 hover: shadow-md">
-        <h1 className="p-1 text text-2xl rounded-t bg-slate-300">{todo.name}</h1>
+        <h1 className="p-1 text text-xl rounded-t bg-slate-300">{todo.name}</h1>
         <p className="p-2 text text-center">{todo.description}</p>
       </main>
 

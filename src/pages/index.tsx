@@ -14,6 +14,8 @@ import { GRAPHQL_AUTH_MODE } from '@aws-amplify/api'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { GetServerSideProps } from 'next'
+import {CursorArrowRaysIcon} from '@heroicons/react/24/solid'
+
 
 Amplify.configure({ ...awsExports, ssr: true })
 
@@ -54,7 +56,7 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
       </Head>
 
       <main >
-        <h3 className="text text-center text-xl">Nathan's Todo app with amplify</h3>
+        <h3 className="text text-center text-xl">Nathan's Todo app with amplify </h3>
 
         <p className="text text-center">
           <code>{todos.length}</code>
@@ -63,7 +65,8 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
 
         <div className="grid">
           {todos.map((todo) => (
-            <a className="max-w-[300px] m-3 rounded border border-slate-500 hover:shadow-md" href={`/todo/${todo.id}`} key={todo.id}>
+            <a className="max-w-[300px] m-3 rounded border border-slate-500 hover:shadow-md relative" href={`/todo/${todo.id}`} key={todo.id}>
+              <CursorArrowRaysIcon className="w-4 h-4 absolute right-1 top-1" />
               <h3 className="p-1 rounded-t bg-slate-300">{todo.name}</h3>
               <p className="p-2 text text-center">{todo.description}</p>
             </a>
