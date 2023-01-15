@@ -43,19 +43,19 @@ export default function TodoPage({ todo }: { todo: Todo }) {
   }
 
   return (
-    <div className="container">
+    <div className="flex flex-col items-center pt-5">
       <Head>
         <title>{todo.name}  Amplify + Next.js</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1>{todo.name}</h1>
-        <p>{todo.description}</p>
+      <main className="max-w-[300px] m-3 rounded border border-slate-500 hover: shadow-md">
+        <h1 className="p-1 text text-2xl rounded-t bg-slate-300">{todo.name}</h1>
+        <p className="p-2 text text-center">{todo.description}</p>
       </main>
 
       <footer>
-        <button  onClick={handleDelete}>
+        <button className=" m-4 p-2 shadow-sm rounded border border-slate-500 hover:bg-slate-300" onClick={handleDelete}>
           💥 Delete todo
         </button>
       </footer>

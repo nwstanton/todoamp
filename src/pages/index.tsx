@@ -63,14 +63,14 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
 
         <div className="grid">
           {todos.map((todo) => (
-            <a className="max-w-[300px] m-3 rounded border border-slate-500 hover: shadow-md" href={`/todo/${todo.id}`} key={todo.id}>
-              <h3>{todo.name}</h3>
-              <p>{todo.description}</p>
+            <a className="max-w-[300px] m-3 rounded border border-slate-500 hover:shadow-md" href={`/todo/${todo.id}`} key={todo.id}>
+              <h3 className="p-1 rounded-t bg-slate-300">{todo.name}</h3>
+              <p className="p-2 text text-center">{todo.description}</p>
             </a>
           ))}
 
           
-            <h3>New Todo</h3>
+            <h3 className="text text-center">Create a new Todo</h3>
 
             <Authenticator>
               {({ signOut }) => (
@@ -78,21 +78,21 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
                   <fieldset>
                     <legend>Title</legend>
                     <input
-                      defaultValue={`Today, ${new Date().toLocaleDateString()}`}
+                      defaultValue={`Created: ${new Date().toLocaleDateString()}`}
                       name="title"
                     />
                   </fieldset>
 
                   <fieldset>
                     <legend>Content</legend>
-                    <textarea
+                    <textarea 
                       defaultValue="I built an Amplify app with Next.js!"
                       name="content"
                     />
                   </fieldset>
 
-                  <button className=" m-4 p-2 hover:bg-slate-400">Create Todo</button>
-                  <button className=" m-4 p-2 hover:bg-slate-400" type="button" onClick={signOut}>
+                  <button className=" m-4 p-2 shadow-sm rounded border border-slate-500 hover:bg-slate-300">Create Todo</button>
+                  <button className=" m-4 p-2 shadow-sm rounded border border-slate-500 hover:bg-slate-300" type="button" onClick={signOut}>
                     Sign out
                   </button>
                 </form>
