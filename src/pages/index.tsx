@@ -1,5 +1,5 @@
 import { Authenticator } from '@aws-amplify/ui-react'
-import { Amplify, API, withSSRContext } from 'aws-amplify'
+import { Amplify, API, Auth, withSSRContext } from 'aws-amplify'
 import Head from 'next/head'
 import awsExports from '../aws-exports'
 import { createTodo } from '../graphql/mutations'
@@ -15,6 +15,7 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { GetServerSideProps } from 'next'
 import {CursorArrowRaysIcon} from '@heroicons/react/24/solid'
+import '@aws-amplify/ui-react/styles.css';
 
 
 Amplify.configure({ ...awsExports, ssr: true })
@@ -59,15 +60,15 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
       </Head>
 
       <main >
-        <h1>Nathan's Todo app with amplify </h1>
-
-        <p>
-          {todoCount}
-        </p>
-
+        <div className="border rounded bg-gradient-to-r from-green-300 to-blue-400">
+          <h1>Nathan's Todo app with amplify </h1>
+          <p>
+            {todoCount}
+          </p>
+        </div>
         <div className="grid">
           {todos.map((todo) => (
-            <a className="max-w-[300px] m-3 rounded border border-slate-500 hover:shadow-md relative" href={`/todo/${todo.id}`} key={todo.id}>
+            <a className="max-w-[500px] m-3 rounded border border-slate-500 hover:shadow-md relative" href={`/todo/${todo.id}`} key={todo.id}>
               <CursorArrowRaysIcon className="w-4 h-4 absolute right-1 top-1" />
               <h2 className="p-1 rounded-t bg-slate-300">{todo.name}</h2>
               <p>{todo.description}</p>
@@ -75,8 +76,8 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
           ))}
 
           
-            <h1>Create a new Todo</h1>
-
+            <h1 className="p-2">Create a new Todo</h1>
+            
             <Authenticator>
               {({ signOut }) => (
                 <form onSubmit={handleCreateTodo}>
@@ -85,6 +86,7 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
                     <input
                       defaultValue={`Created: ${new Date().toLocaleDateString()}`}
                       name="title"
+                      className="border border-dashed rounded border-black"
                     />
                   </fieldset>
 
@@ -93,6 +95,7 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
                     <textarea 
                       defaultValue="I built an Amplify app with Next.js!"
                       name="content"
+                      className="border border-dashed rounded border-black"
                     />
                   </fieldset>
 

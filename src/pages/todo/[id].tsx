@@ -56,7 +56,7 @@ export default function TodoPage({ todo }: { todo: Todo }) {
 
       <footer>
         <button className=" m-4 p-2 shadow-sm rounded border border-slate-500 hover:bg-slate-300" onClick={handleDelete}>
-          💥 Delete todo
+          <p> Delete todo</p>
         </button>
       </footer>
     </div>
