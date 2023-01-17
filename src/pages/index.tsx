@@ -26,6 +26,7 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
   
   let todoCount: string = todos.length.toString() + " " + (todos.length > 1 ? "Todos" : "Todo")
 
+
   async function handleCreateTodo(event: { preventDefault: () => void; target: HTMLFormElement | undefined }) {
     event.preventDefault()
 
@@ -35,6 +36,7 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
       const createInput: CreateTodoInput = {
         name: form.get('title')!.toString(),
         description: form.get('content')!.toString(),
+        completed: false,
       }
 
       const request = (await API.graphql({
@@ -98,6 +100,7 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
                       className="border border-dashed rounded border-black"
                     />
                   </fieldset>
+
 
                   <button className=" m-4 p-2 shadow-sm rounded border border-slate-500 hover:bg-slate-300">Create Todo</button>
                   <button className=" m-4 p-2 shadow-sm rounded border border-slate-500 hover:bg-slate-300" type="button" onClick={signOut}>

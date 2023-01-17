@@ -1,17 +1,20 @@
 import { Amplify, API, withSSRContext } from 'aws-amplify'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { DeleteTodoInput, GetTodoQuery, Todo, ListTodosQuery } from '../../API'
+import { DeleteTodoInput, GetTodoQuery, Todo, ListTodosQuery, UpdateTodoInput } from '../../API'
 import awsExports from '../../aws-exports'
-import { deleteTodo } from '../../graphql/mutations'
+import { deleteTodo, updateTodo } from '../../graphql/mutations'
 import { getTodo, listTodos } from '../../graphql/queries'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { GRAPHQL_AUTH_MODE } from '@aws-amplify/api'
+import { CheckboxField } from '@aws-amplify/ui-react'
+import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/solid'
 
 Amplify.configure({ ...awsExports, ssr: true })
 
 export default function TodoPage({ todo }: { todo: Todo }) {
   const router = useRouter()
+  const chkMark = todo.completed ? <CheckCircleIcon className=" w-6 h-6 inline-block" /> : <XCircleIcon className=" w-6 h-6 inline-block" />
 
   if (router.isFallback) {
     return (
@@ -19,6 +22,29 @@ export default function TodoPage({ todo }: { todo: Todo }) {
         <h1>Loading&hellip;</h1>
       </div>
     )
+  }
+
+  async function handleComplete(): Promise<void>{
+    try{
+      const updateInput: UpdateTodoInput = {
+        id: todo.id,
+        completed: true
+      }
+
+      await API.graphql({
+        authMode: GRAPHQL_AUTH_MODE.AMAZON_COGNITO_USER_POOLS,
+        query: updateTodo,
+        variables: {
+          input: updateInput,
+        },
+
+      })
+      router.push(`/`)
+    }
+    catch ({ errors }) {
+      console.error(...errors)
+      throw new Error(errors[0].message)
+    }
   }
 
   async function handleDelete(): Promise<void> {
@@ -49,14 +75,21 @@ export default function TodoPage({ todo }: { todo: Todo }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="max-w-[300px] m-3 rounded border border-slate-500 hover: shadow-md">
-        <h1 className="p-1 text text-xl rounded-t bg-slate-300">{todo.name}</h1>
-        <p className="p-2 text text-center">{todo.description}</p>
+      <main className="relative max-w-[300px] m-3 rounded border border-slate-500 hover:shadow-md">
+        <div>
+          <h1 className="p-1 text text-xl rounded-t bg-slate-300">{todo.name}</h1>
+          <p className="p-2 text text-center">{todo.description}</p>
+        </div>
+        <div className=" pl-[25%]">Completed: {chkMark}</div>
+        
       </main>
 
       <footer>
-        <button className=" m-4 p-2 shadow-sm rounded border border-slate-500 hover:bg-slate-300" onClick={handleDelete}>
+        <button className=" m-4 p-2 shadow-sm rounded border border-slate-500 hover:bg-red-300 hover:shadow-md" onClick={handleDelete}>
           <p> Delete todo</p>
+        </button>
+        <button className=" m-4 p-2 shadow-sm rounded border border-slate-500 hover:bg-green-300 hover:shadow-md" onClick={handleComplete}>
+          <p>Complete Todo</p>
         </button>
       </footer>
     </div>
