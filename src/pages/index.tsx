@@ -26,7 +26,6 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
   
   let todoCount: string = todos.length.toString() + " " + (todos.length > 1 ? "Todos" : "Todo")
 
-
   async function handleCreateTodo(event: { preventDefault: () => void; target: HTMLFormElement | undefined }) {
     event.preventDefault()
 

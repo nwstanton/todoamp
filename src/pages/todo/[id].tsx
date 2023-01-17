@@ -7,7 +7,6 @@ import { deleteTodo, updateTodo } from '../../graphql/mutations'
 import { getTodo, listTodos } from '../../graphql/queries'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { GRAPHQL_AUTH_MODE } from '@aws-amplify/api'
-import { CheckboxField } from '@aws-amplify/ui-react'
 import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/solid'
 
 Amplify.configure({ ...awsExports, ssr: true })
@@ -28,7 +27,7 @@ export default function TodoPage({ todo }: { todo: Todo }) {
     try{
       const updateInput: UpdateTodoInput = {
         id: todo.id,
-        completed: true
+        completed: !todo.completed
       }
 
       await API.graphql({
@@ -66,6 +65,9 @@ export default function TodoPage({ todo }: { todo: Todo }) {
       console.error(...errors)
       throw new Error(errors[0].message)
     }
+
+
+
   }
 
   return (
@@ -89,7 +91,7 @@ export default function TodoPage({ todo }: { todo: Todo }) {
           <p> Delete todo</p>
         </button>
         <button className=" m-4 p-2 shadow-sm rounded border border-slate-500 hover:bg-green-300 hover:shadow-md" onClick={handleComplete}>
-          <p>Complete Todo</p>
+          <p>Mark {todo.completed ? " Incomplete" : " Complete"}</p>
         </button>
       </footer>
     </div>
