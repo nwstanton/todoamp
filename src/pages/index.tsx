@@ -56,13 +56,13 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
   return (
     <div className="flex flex-col items-center pt-5">
       <Head>
-        <title>Nathan's Todo App</title>
+        <title>Nathan&apos;s Todo App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main >
         <div className="border rounded bg-gradient-to-r from-green-300 to-blue-400">
-          <h1>Nathan's Todo app with amplify </h1>
+          <h1>Nathan&apos;s Todo app with amplify </h1>
           <p>
             {todoCount}
           </p>
