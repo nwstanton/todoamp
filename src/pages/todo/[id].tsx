@@ -13,7 +13,7 @@ Amplify.configure({ ...awsExports, ssr: true })
 
 export default function TodoPage({ todo }: { todo: Todo }) {
   const router = useRouter()
-  const chkMark = todo.completed ? <CheckCircleIcon className=" w-6 h-6 inline-block" /> : <XCircleIcon className=" w-6 h-6 inline-block" />
+  var chkMark = todo.completed ? <CheckCircleIcon className=" w-6 h-6 inline-block" /> : <XCircleIcon className=" w-6 h-6 inline-block" />
 
   if (router.isFallback) {
     return (
@@ -38,7 +38,8 @@ export default function TodoPage({ todo }: { todo: Todo }) {
         },
 
       })
-      router.push(`/`)
+      //this feels like a hack, brain says useState() rather than router push
+      router.push(window.location.pathname)  
     }
     catch ({ errors }) {
       console.error(...errors)
