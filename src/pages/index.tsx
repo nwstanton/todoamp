@@ -71,9 +71,10 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
           {todos.map((todo) => (
             <a className="max-w-[500px] m-3 rounded border border-slate-500 hover:shadow-md relative" href={`/todo/${todo.id}`} key={todo.id}>
               <CursorArrowRaysIcon className="w-4 h-4 absolute right-1 top-1" />
-              <h2 className="p-1 rounded-t bg-slate-300">{todo.name}</h2>
+              <h2 className={"p-1 rounded-t "+ (todo.completed ? 'bg-green-300' : 'bg-red-300')}>{todo.name}</h2>
               <p>{todo.description}</p>
             </a>
+            
           ))}
 
           
