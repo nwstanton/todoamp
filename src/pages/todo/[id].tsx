@@ -8,6 +8,7 @@ import { getTodo, listTodos } from '../../graphql/queries'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { GRAPHQL_AUTH_MODE } from '@aws-amplify/api'
 import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/solid'
+import TextEditor from './TextEditor'
 
 Amplify.configure({ ...awsExports, ssr: true })
 
@@ -67,8 +68,6 @@ export default function TodoPage({ todo }: { todo: Todo }) {
       throw new Error(errors[0].message)
     }
 
-
-
   }
 
   return (
@@ -84,17 +83,14 @@ export default function TodoPage({ todo }: { todo: Todo }) {
           <p className="p-2 text text-center">{todo.description}</p>
         </div>
         <div className=" pl-[25%]">Completed: {chkMark}</div>
-        
       </main>
-
-      <footer>
-        <button className=" m-4 p-2 shadow-sm rounded border border-slate-500 hover:bg-red-300 hover:shadow-md" onClick={handleDelete}>
-          <p> Delete todo</p>
-        </button>
         <button className=" m-4 p-2 shadow-sm rounded border border-slate-500 hover:bg-green-300 hover:shadow-md" onClick={handleComplete}>
           <p>Mark {todo.completed ? " Incomplete" : " Complete"}</p>
         </button>
-      </footer>
+        <button className=" m-4 p-2 shadow-sm rounded border border-slate-500 hover:bg-red-300 hover:shadow-md" onClick={handleDelete}>
+          <p> Delete todo</p>
+        </button>
+        <TextEditor name={todo.name} description={todo.description}></TextEditor>
     </div>
   )
 }
