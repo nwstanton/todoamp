@@ -22,6 +22,7 @@ Amplify.configure({ ...awsExports, ssr: true })
 
 
 export default function Home({ todos = [] }: { todos: Todo[] }) {
+
   const router = useRouter()
   
   let todoCount: string = todos.length.toString() + " " + (todos.length > 1 ? "Todos" : "Todo")

@@ -90,7 +90,7 @@ export default function TodoPage({ todo }: { todo: Todo }) {
         <button className=" m-4 p-2 shadow-sm rounded border border-slate-500 hover:bg-red-300 hover:shadow-md" onClick={handleDelete}>
           <p> Delete todo</p>
         </button>
-        <TextEditor name={todo.name} description={todo.description}></TextEditor>
+        <TextEditor id={todo.id} name={todo.name} description={todo.description} router={router}></TextEditor>
     </div>
   )
 }
