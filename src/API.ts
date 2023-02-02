@@ -7,12 +7,14 @@ export type CreateTodoInput = {
   name: string,
   description?: string | null,
   completed?: boolean | null,
+  owner?: string | null,
 };
 
 export type ModelTodoConditionInput = {
   name?: ModelStringInput | null,
   description?: ModelStringInput | null,
   completed?: ModelBooleanInput | null,
+  owner?: ModelStringInput | null,
   and?: Array< ModelTodoConditionInput | null > | null,
   or?: Array< ModelTodoConditionInput | null > | null,
   not?: ModelTodoConditionInput | null,
@@ -71,9 +73,9 @@ export type Todo = {
   name: string,
   description?: string | null,
   completed?: boolean | null,
+  owner?: string | null,
   createdAt: string,
   updatedAt: string,
-  owner?: string | null,
 };
 
 export type UpdateTodoInput = {
@@ -81,6 +83,7 @@ export type UpdateTodoInput = {
   name?: string | null,
   description?: string | null,
   completed?: boolean | null,
+  owner?: string | null,
 };
 
 export type DeleteTodoInput = {
@@ -92,6 +95,7 @@ export type ModelTodoFilterInput = {
   name?: ModelStringInput | null,
   description?: ModelStringInput | null,
   completed?: ModelBooleanInput | null,
+  owner?: ModelStringInput | null,
   and?: Array< ModelTodoFilterInput | null > | null,
   or?: Array< ModelTodoFilterInput | null > | null,
   not?: ModelTodoFilterInput | null,
@@ -175,9 +179,9 @@ export type CreateTodoMutation = {
     name: string,
     description?: string | null,
     completed?: boolean | null,
+    owner?: string | null,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
@@ -193,9 +197,9 @@ export type UpdateTodoMutation = {
     name: string,
     description?: string | null,
     completed?: boolean | null,
+    owner?: string | null,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
@@ -211,9 +215,9 @@ export type DeleteTodoMutation = {
     name: string,
     description?: string | null,
     completed?: boolean | null,
+    owner?: string | null,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
@@ -228,9 +232,9 @@ export type GetTodoQuery = {
     name: string,
     description?: string | null,
     completed?: boolean | null,
+    owner?: string | null,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
@@ -249,9 +253,9 @@ export type ListTodosQuery = {
       name: string,
       description?: string | null,
       completed?: boolean | null,
+      owner?: string | null,
       createdAt: string,
       updatedAt: string,
-      owner?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -269,9 +273,9 @@ export type OnCreateTodoSubscription = {
     name: string,
     description?: string | null,
     completed?: boolean | null,
+    owner?: string | null,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
@@ -287,9 +291,9 @@ export type OnUpdateTodoSubscription = {
     name: string,
     description?: string | null,
     completed?: boolean | null,
+    owner?: string | null,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
@@ -305,8 +309,8 @@ export type OnDeleteTodoSubscription = {
     name: string,
     description?: string | null,
     completed?: boolean | null,
+    owner?: string | null,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };

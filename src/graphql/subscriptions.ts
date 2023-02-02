@@ -12,9 +12,9 @@ export const onCreateTodo = /* GraphQL */ `
       name
       description
       completed
+      owner
       createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -28,9 +28,9 @@ export const onUpdateTodo = /* GraphQL */ `
       name
       description
       completed
+      owner
       createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -44,9 +44,9 @@ export const onDeleteTodo = /* GraphQL */ `
       name
       description
       completed
+      owner
       createdAt
       updatedAt
-      owner
     }
   }
 `;
