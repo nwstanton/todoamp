@@ -89,7 +89,7 @@ function TextEditor({
     :
     <>
     {/* this will expand the button into a form */}
-    <button onClick={grow}> here is some shit</button>
+    <button onClick={grow}> Edit Todo</button>
     </>
 
     return (
