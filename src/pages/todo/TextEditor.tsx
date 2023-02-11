@@ -22,7 +22,7 @@ function TextEditor({
 {
     const [expand, setExpand] = useState(false)
     
-    async function handleEditText(event: { preventDefault: () => void; target: HTMLFormElement | undefined }) {
+    async function handleEditText(event) {
         event.preventDefault()
 
         const form = new FormData(event.target)
