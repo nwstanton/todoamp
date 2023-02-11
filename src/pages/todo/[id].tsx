@@ -14,7 +14,6 @@ Amplify.configure({ ...awsExports, ssr: true })
 
 export default function TodoPage({ todo }: { todo: Todo }) {
   const router = useRouter()
-  var chkMark = todo.completed ? <CheckCircleIcon className=" w-6 h-6 inline-block" /> : <XCircleIcon className=" w-6 h-6 inline-block" />
 
   if (router.isFallback) {
     return (
@@ -82,7 +81,7 @@ export default function TodoPage({ todo }: { todo: Todo }) {
           <h1 className={"p-1 text text-xl rounded-t " + (todo.completed ? 'bg-green-300' : 'bg-red-300')}>{todo.name}</h1>
           <p className="p-2 text text-center">{todo.description}</p>
         </div>
-        <div className=" pl-[25%]">Completed: {chkMark}</div>
+        <div className=" pl-[25%]">Completed: {todo.completed ? <CheckCircleIcon className=" w-6 h-6 inline-block" /> : <XCircleIcon className=" w-6 h-6 inline-block" />} </div>
       </main>
         <button className=" m-4 p-2 shadow-sm rounded border border-slate-500 hover:bg-green-300 hover:shadow-md" onClick={handleComplete}>
           <p>Mark {todo.completed ? " Incomplete" : " Complete"}</p>
